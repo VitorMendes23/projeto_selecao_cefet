@@ -1,0 +1,29 @@
+package principal;
+
+public class Gerente extends Empregado {
+	private static final double SALARIO_SECRETARIO  = 20000.00;
+	private static final double VALOR_ANO_SERVICO  = 3000.00;
+
+
+	private double valorSalarioTotalMes;
+
+	public double getValorSalarioTotalMes() {
+		return valorSalarioTotalMes;
+	}
+
+	public void setValorSalarioTotalMes(double valorSalarioTotalMes) {
+		this.valorSalarioTotalMes = valorSalarioTotalMes;
+	}
+	
+
+	public Gerente(String nome, int mesContatacao, int anoContratacao) {
+		super(nome, mesContatacao, anoContratacao);
+		this.valorSalarioTotalMes = calculaValorPorMes();
+	}
+
+	public double calculaValorPorMes() {
+		//calcular o salario todal deste funcionario
+		
+		
+	}
+}

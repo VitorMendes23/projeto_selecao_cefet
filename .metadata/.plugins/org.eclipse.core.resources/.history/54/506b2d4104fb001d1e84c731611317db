@@ -1,0 +1,58 @@
+package principal;
+import java.time.LocalDate;
+import java.time.YearMonth;
+import java.time.temporal.ChronoUnit;
+
+public class Gerente extends Empregado {
+	private static final double SALARIO_GERENTE  = 20000.00;
+	private static final double VALOR_ANO_SERVICO  = 3000.00;
+
+
+
+	private double valorSalarioTotalMes;
+
+	public double getValorSalarioTotalMes() {
+		return valorSalarioTotalMes;
+	}
+
+	public void setValorSalarioTotalMes(double valorSalarioTotalMes) {
+		this.valorSalarioTotalMes = valorSalarioTotalMes;
+	}
+	
+
+	public Gerente(String nome, int mesContatacao, int anoContratacao) {
+		super(nome, mesContatacao, anoContratacao);
+		this.valorSalarioTotalMes = calculaValorPorMes();
+	}
+
+	public double calculaValorPorMes() {
+		//calcular o salario todal deste funcionario
+		double valorTotal;
+		LocalDate dataAtual = LocalDate.now();
+		YearMonth dataEntrada = YearMonth.of(this.anoContratacao, this.mesContratacao);
+		long anosTrabalhados = ChronoUnit.YEARS.between(dataEntrada, YearMonth.from(dataAtual));
+
+		if(anosTrabalhados > 0)
+			valorTotal = SALARIO_GERENTE + (VALOR_ANO_SERVICO * anosTrabalhados);
+		else
+			valorTotal = SALARIO_GERENTE;
+		
+		return valorTotal;
+		
+	}
+	public double calculaValorPorMesEspecifico(int mes, int ano) {
+		//calcular o salario todal deste funcionario
+		double valorTotal;
+        YearMonth dataParaCalculo = YearMonth.of(ano, mes);
+		YearMonth dataEntrada = YearMonth.of(this.anoContratacao, this.mesContratacao);
+        long anos = dataEntrada.until(dataParaCalculo, ChronoUnit.YEARS);
+
+		if(anos > 0)
+			valorTotal = SALARIO_GERENTE+ (VALOR_ANO_SERVICO * anos);
+		else
+			valorTotal = SALARIO_GERENTE;
+		
+		return valorTotal;
+		
+	}
+}

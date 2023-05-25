@@ -1,0 +1,47 @@
+package principal;
+
+import java.util.ArrayList;
+
+public class GestaoGastos {
+
+	public double valorPagoMes(ArrayList<Empregado> listaEmpregados, int mes, int ano) {
+        double valorTotalPago = 0;
+        
+        for(Empregado empregado : listaEmpregados) {
+        	//if (empregado.getMesContratacao() <= mes && empregado.getAnoContratacao() <= ano) {
+             //   valorTotalPago += empregado.getSalario();
+                
+                if (empregado instanceof beneficiado) {
+                	beneficiado funcionarioComBeneficio = (beneficiado) empregado;
+                	if(funcionarioComBeneficio instanceof Secretario) {
+                		Secretario secretario = (Secretario) empregado;
+                    	if (secretario.getMesContratacao() <= mes && secretario.getAnoContratacao() <= ano) {
+                    		valorTotalPago += funcionarioComBeneficio.calculaValorPorMesEspecifico();
+                    	}
+                    	
+                	}else if(funcionarioComBeneficio instanceof Vendedor) {
+                		valorTotalPago += funcionarioComBeneficio.calculaValorPorMes();
+                	}
+                }
+            }
+        }
+
+	}
+	public double valorPagoEmSalario(ArrayList<Empregado> listaEmpregados, int mes, int ano) {
+		
+	}
+	
+	public double valorPagoEmBeneficios(ArrayList<Empregado> listaEmpregados, int mes, int ano) {
+		
+	}
+	
+	public Empregado valorMaisAltoMes(ArrayList<Empregado> listaEmpregados, int mes, int ano) {
+		
+	}
+	public String valorMaisAltoEmBeneficiosMes(ArrayList<Empregado> listaEmpregados, int mes, int ano) {
+		
+	}
+	public Empregado MaiorVendaMes(ArrayList<Empregado> listaEmpregados, int mes, int ano) {
+		
+	}
+}

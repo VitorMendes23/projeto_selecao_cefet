@@ -1,0 +1,27 @@
+package principal;
+
+import java.util.ArrayList;
+
+public class GestaoGastos {
+
+	public double valorPagoMes(ArrayList<Empregado> listaEmpregados, int mes, int ano) {
+		
+	}
+	public double valorPagoEmSalario(ArrayList<Empregado> listaEmpregados, int mes, int ano) {
+		
+	}
+	
+	public double valorPagoEmBeneficios(ArrayList<Empregado> listaEmpregados, int mes, int ano) {
+		
+	}
+	
+	public Empregado valorMaisAltoMes(ArrayList<Empregado> listaEmpregados, int mes, int ano) {
+		
+	}
+	public String valorMaisAltoEmBeneficiosMes(ArrayList<Empregado> listaEmpregados, int mes, int ano) {
+		
+	}
+	public Empregado MaiorVendaMes(ArrayList<Empregado> listaEmpregados, int mes, int ano) {
+		
+	}
+}

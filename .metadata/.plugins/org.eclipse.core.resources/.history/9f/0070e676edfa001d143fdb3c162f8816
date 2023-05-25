@@ -1,0 +1,11 @@
+package principal;
+
+public abstract class Empregado {
+	
+	protected String nome;
+	protected int mesContatacao;
+	protected int anoContratacao;
+	
+	
+
+}

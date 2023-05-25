@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.lang.Double"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="java.time.format.DateTimeFormatter"/>
+    <fullyQualifiedTypeName name="principal.beneficiado"/>
+    <fullyQualifiedTypeName name="principal.Secretario"/>
+    <fullyQualifiedTypeName name="principal.Gerente"/>
+    <fullyQualifiedTypeName name="principal.Empregado"/>
+    <fullyQualifiedTypeName name="principal.Vendedor"/>
+</qualifiedTypeNameHistroy>
