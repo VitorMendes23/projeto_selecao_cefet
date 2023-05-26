@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ControleDados {
 	
-	private ArrayList<Empregado> listaEmpregados;
+	private ArrayList<Empregado> listaEmpregados; //"armazena" todos os funcionarios
 
 	public ArrayList<Empregado> getListaEmpregados() {
 		return listaEmpregados;
@@ -28,4 +28,32 @@ public class ControleDados {
 		this.listaEmpregados.remove(novoEmpregado);
 	}
 
+	public Empregado pesquisaEmpregadoPeloNome(String nome) {
+		
+		for(Empregado empreg : this.listaEmpregados) {
+			if (empreg instanceof beneficiado) {
+		    	beneficiado funcionarioComBeneficio = (beneficiado) empreg;
+		    	if(funcionarioComBeneficio instanceof Secretario) {
+		    		Secretario secretario = (Secretario) empreg;
+					if(secretario.getNome().equals(nome)) {
+						return secretario;
+					}
+		        	
+		    	}else if(funcionarioComBeneficio instanceof Vendedor) {
+		    		Vendedor vendedor = (Vendedor) empreg;
+					if(vendedor.getNome().equals(nome)) {
+						return vendedor;
+					}
+		    	}
+		    }else if(empreg instanceof Gerente) {
+		    	Gerente gerente = (Gerente) empreg;
+				if(gerente.getNome().equals(nome)) {
+					return gerente;
+				}
+		    }
+		}
+		
+		return null;
+	}
 }
+	

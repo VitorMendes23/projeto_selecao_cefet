@@ -48,7 +48,7 @@ public class Secretario extends beneficiado {
 
 	}
 	public double calculaValorPorMesEspecifico(int mes, int ano) {
-		//calcular o salario todal deste funcionario
+		//calcular o salario todal deste funcionario em um mes
 		double valorTotal;
         YearMonth dataParaCalculo = YearMonth.of(ano, mes);
 		YearMonth dataEntrada = YearMonth.of(this.anoContratacao, this.mesContratacao);

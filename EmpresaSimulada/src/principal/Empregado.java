@@ -5,7 +5,6 @@ public abstract class Empregado {
 	protected String nome;
 	protected int mesContratacao;
 	protected int anoContratacao;
-	//protected double valorSalarioTotalMes;
 
 	
 	public String getNome() {
@@ -26,18 +25,12 @@ public abstract class Empregado {
 	public void setAnoContratacao(int anoContratacao) {
 		this.anoContratacao = anoContratacao;
 	}
-//	public double getValorSalarioTotalMes() {
-//		return valorSalarioTotalMes;
-//	}
-//	public void setValorSalarioTotalMes(double valorSalarioTotalMes) {
-//		this.valorSalarioTotalMes = valorSalarioTotalMes;
-//	}
+
 	
 	public Empregado(String nome, int mesContatacao, int anoContratacao) {
 		this.nome = nome;
 		this.mesContratacao = mesContatacao;
 		this.anoContratacao = anoContratacao;
-//		this.valorSalarioTotalMes = valorSalarioTotalMes;
 	}
 	public Empregado() {
 		this.nome = "";

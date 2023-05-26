@@ -14,8 +14,7 @@ public class Vendedor extends beneficiado{
 
 
 	private double valorSalarioTotalMes;
-	//private HashMap<String, double> vendasPorMes;
-	private Map<String, Double> vendas;
+	private Map<String, Double> vendas;  //armazana o valor das vendas, tendo a data(mes/ano) como chave
 
 	
 	public double getValorSalarioTotalMes() {
@@ -38,10 +37,10 @@ public class Vendedor extends beneficiado{
 	}
 	
 
-	public Vendedor(String nome, int mesContatacao, int anoContratacao, Map<String, Double> vendas) {
+	public Vendedor(String nome, int mesContatacao, int anoContratacao) {
 		super(nome, mesContatacao, anoContratacao, VALOR_BENEFICO);
 		this.valorSalarioTotalMes = calculaValorPorMes();
-		this.vendas = vendas;
+		this.vendas = new HashMap<>();
 	}
 	public Vendedor() {
 		super();
@@ -62,15 +61,12 @@ public class Vendedor extends beneficiado{
 		else
 			valorTotal = SALARIO_VENDEDOR;
 		
-	//	double valorVendido = ;
-		
-		//valorTotal = valorTotal + (valorVendido*VALOR_BENEFICO);
 
 		return valorTotal;
 		
 	}
 	public double calculaValorPorMesEspecifico(int mes, int ano) {
-		//calcular o salario todal deste funcionario
+		//calcular o salario todal deste funcionario em um mes especifico
 		double valorTotal;
         YearMonth dataParaCalculo = YearMonth.of(ano, mes);
 		YearMonth dataEntrada = YearMonth.of(this.anoContratacao, this.mesContratacao);
@@ -91,26 +87,7 @@ public class Vendedor extends beneficiado{
 		return valorTotal;
 		
 	}
-	public double calculaValorPorVendaMesDataAtual() {
-		double valorTotalVenda;
-		LocalDate dataAtual = LocalDate.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/yyyy");
-        String dataConvertida = dataAtual.format(formatter);
-        
-        valorTotalVenda = (this.vendas.get(dataConvertida) * VALOR_BENEFICO);
-        
-        return valorTotalVenda;
-	}
-//	public double calculaValorPorVendaMes(String data) {
-//		double valorTotalVenda;
-////		LocalDate dataAtual = LocalDate.now();
-////		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/yyyy");
-////        String dataConvertida = dataAtual.format(formatter);
-//        
-//        valorTotalVenda = (this.vendas.get(data) * VALOR_BENEFICO);
-//        
-//        return valorTotalVenda;
-//	}
+
 	public double calculaValorSomenteSalario(int mes, int ano) {
 		double valorTotal;
         YearMonth dataParaCalculo = YearMonth.of(ano, mes);
@@ -137,7 +114,7 @@ public class Vendedor extends beneficiado{
 		
 	}
 	public double calculaValorSomenteVendaMes(int mes, int ano) {
-		//calcular o beneficio todal deste funcionario
+		//calcular venda desde funcionario
         YearMonth dataParaCalculo = YearMonth.of(ano, mes);
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/yyyy");
         String dataFormatada = dataParaCalculo.format(formatter);

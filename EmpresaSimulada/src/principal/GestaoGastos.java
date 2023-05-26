@@ -2,9 +2,9 @@ package principal;
 
 import java.util.ArrayList;
 
-public class GestaoGastos {
+public class GestaoGastos { //classe que implementa todos os metodos de calculos que abrangem todo o sistema
 
-	public double valorPagoMes(ArrayList<Empregado> listaEmpregados, int mes, int ano) {
+	public static double valorPagoMes(ArrayList<Empregado> listaEmpregados, int mes, int ano) {
         double valorTotalPago = 0;
         
         for(Empregado empregado : listaEmpregados) {
@@ -13,19 +13,19 @@ public class GestaoGastos {
                 	beneficiado funcionarioComBeneficio = (beneficiado) empregado;
                 	if(funcionarioComBeneficio instanceof Secretario) {
                 		Secretario secretario = (Secretario) empregado;
-                    	if (secretario.getMesContratacao() <= mes && secretario.getAnoContratacao() <= ano) {
+                    	if (secretario.getAnoContratacao() < ano || (secretario.getAnoContratacao() == ano && secretario.getMesContratacao() <= mes)) {
                     		valorTotalPago += secretario.calculaValorPorMesEspecifico(mes, ano);
                     	}
                     	
                 	}else if(funcionarioComBeneficio instanceof Vendedor) {
                 		Vendedor vendedor = (Vendedor) empregado;
-                    	if (vendedor.getMesContratacao() <= mes && vendedor.getAnoContratacao() <= ano) {
+                    	if (vendedor.getAnoContratacao() < ano || (vendedor.getAnoContratacao() == ano && vendedor.getMesContratacao() <= mes)) {
                     		valorTotalPago += vendedor.calculaValorPorMesEspecifico(mes, ano);
                     	}
                 	}
                 }else if(empregado instanceof Gerente) {
                 	Gerente gerente = (Gerente) empregado;
-                	if (gerente.getMesContratacao() <= mes && gerente.getAnoContratacao() <= ano) {
+                	if (gerente.getAnoContratacao() < ano || (gerente.getAnoContratacao() == ano && gerente.getMesContratacao() <= mes)) {
                 		valorTotalPago += gerente.calculaValorPorMesEspecifico(mes, ano);
                 	}
                 }
@@ -33,7 +33,7 @@ public class GestaoGastos {
         return valorTotalPago;
 
 	}
-	public double valorPagoEmSalario(ArrayList<Empregado> listaEmpregados, int mes, int ano) {
+	public static double valorPagoEmSalario(ArrayList<Empregado> listaEmpregados, int mes, int ano) {
         double valorTotalPago = 0;
         for(Empregado empregado : listaEmpregados) {
             
@@ -41,19 +41,19 @@ public class GestaoGastos {
             	beneficiado funcionarioComBeneficio = (beneficiado) empregado;
             	if(funcionarioComBeneficio instanceof Secretario) {
             		Secretario secretario = (Secretario) empregado;
-                	if (secretario.getMesContratacao() <= mes && secretario.getAnoContratacao() <= ano) {
+                	if (secretario.getAnoContratacao() < ano || (secretario.getAnoContratacao() == ano && secretario.getMesContratacao() <= mes)) {
                 		valorTotalPago += secretario.calculaValorSomenteSalario(mes, ano);
                 	}
                 	
             	}else if(funcionarioComBeneficio instanceof Vendedor) {
             		Vendedor vendedor = (Vendedor) empregado;
-                	if (vendedor.getMesContratacao() <= mes && vendedor.getAnoContratacao() <= ano) {
+                	if (vendedor.getAnoContratacao() < ano || (vendedor.getAnoContratacao() == ano && vendedor.getMesContratacao() <= mes)) {
                 		valorTotalPago += vendedor.calculaValorSomenteSalario(mes, ano);
                 	}
             	}
             }else if(empregado instanceof Gerente) {
             	Gerente gerente = (Gerente) empregado;
-            	if (gerente.getMesContratacao() <= mes && gerente.getAnoContratacao() <= ano) {
+            	if (gerente.getAnoContratacao() < ano || (gerente.getAnoContratacao() == ano && gerente.getMesContratacao() <= mes)) {
             		valorTotalPago += gerente.calculaValorPorMesEspecifico(mes, ano);
             	}
             }
@@ -63,7 +63,7 @@ public class GestaoGastos {
 
 	}
 	
-	public double valorPagoEmBeneficios(ArrayList<Empregado> listaEmpregados, int mes, int ano) {
+	public static double valorPagoEmBeneficios(ArrayList<Empregado> listaEmpregados, int mes, int ano) {
         double valorTotalPago = 0;
 
         for(Empregado empregado : listaEmpregados) {
@@ -72,13 +72,13 @@ public class GestaoGastos {
             	beneficiado funcionarioComBeneficio = (beneficiado) empregado;
             	if(funcionarioComBeneficio instanceof Secretario) {
             		Secretario secretario = (Secretario) empregado;
-                	if (secretario.getMesContratacao() <= mes && secretario.getAnoContratacao() <= ano) {
+                	if (secretario.getAnoContratacao() < ano || (secretario.getAnoContratacao() == ano && secretario.getMesContratacao() <= mes)) {
                 		valorTotalPago += secretario.calculaValorSomenteBeneficio(mes, ano);
                 	}
                 	
             	}else if(funcionarioComBeneficio instanceof Vendedor) {
             		Vendedor vendedor = (Vendedor) empregado;
-                	if (vendedor.getMesContratacao() <= mes && vendedor.getAnoContratacao() <= ano) {
+                	if (vendedor.getAnoContratacao() < ano || (vendedor.getAnoContratacao() == ano && vendedor.getMesContratacao() <= mes)) {
                 		valorTotalPago += vendedor.calculaValorSomenteBeneficio(mes, ano);
                 	}
             	}
@@ -88,7 +88,7 @@ public class GestaoGastos {
 
 	}
 	
-	public Empregado valorMaisAltoMes(ArrayList<Empregado> listaEmpregados, int mes, int ano) {
+	public static Empregado valorMaisAltoMes(ArrayList<Empregado> listaEmpregados, int mes, int ano) {
 		Empregado empreg= null;
         double maiorValor = 0;
 
@@ -98,7 +98,7 @@ public class GestaoGastos {
             	beneficiado funcionarioComBeneficio = (beneficiado) empregado;
             	if(funcionarioComBeneficio instanceof Secretario) {
             		Secretario secretario = (Secretario) empregado;
-                	if (secretario.getMesContratacao() <= mes && secretario.getAnoContratacao() <= ano) {
+                	if (secretario.getAnoContratacao() < ano || (secretario.getAnoContratacao() == ano && secretario.getMesContratacao() <= mes)) {
                 		double valorRecebido = secretario.calculaValorPorMesEspecifico(mes, ano);
                 		if(valorRecebido > maiorValor) {
                 			empreg = secretario;
@@ -108,7 +108,7 @@ public class GestaoGastos {
                 	
             	}else if(funcionarioComBeneficio instanceof Vendedor) {
             		Vendedor vendedor = (Vendedor) empregado;
-                	if (vendedor.getMesContratacao() <= mes && vendedor.getAnoContratacao() <= ano) {
+                	if (vendedor.getAnoContratacao() < ano || (vendedor.getAnoContratacao() == ano && vendedor.getMesContratacao() <= mes)) {
                 		double valorRecebido = vendedor.calculaValorPorMesEspecifico(mes, ano);
                 		if(valorRecebido > maiorValor) {
                 			empreg = vendedor;
@@ -118,7 +118,7 @@ public class GestaoGastos {
             	}
             }else if(empregado instanceof Gerente) {
             	Gerente gerente = (Gerente) empregado;
-            	if (gerente.getMesContratacao() <= mes && gerente.getAnoContratacao() <= ano) {
+            	if (gerente.getAnoContratacao() < ano || (gerente.getAnoContratacao() == ano && gerente.getMesContratacao() <= mes)) {
             		double valorRecebido = gerente.calculaValorPorMesEspecifico(mes, ano);
             		if(valorRecebido > maiorValor) {
             			empreg = gerente;
@@ -129,7 +129,7 @@ public class GestaoGastos {
     }
 		return empreg;
 	}
-	public String valorMaisAltoEmBeneficiosMes(ArrayList<Empregado> listaEmpregados, int mes, int ano) {
+	public static String valorMaisAltoEmBeneficiosMes(ArrayList<Empregado> listaEmpregados, int mes, int ano) {
 		String nome = "";
         double maiorValor = 0;
 
@@ -139,7 +139,7 @@ public class GestaoGastos {
             	beneficiado funcionarioComBeneficio = (beneficiado) empregado;
             	if(funcionarioComBeneficio instanceof Secretario) {
             		Secretario secretario = (Secretario) empregado;
-                	if (secretario.getMesContratacao() <= mes && secretario.getAnoContratacao() <= ano) {
+                	if (secretario.getAnoContratacao() < ano || (secretario.getAnoContratacao() == ano && secretario.getMesContratacao() <= mes)) {
                 		double valorRecebido = secretario.calculaValorSomenteBeneficio(mes, ano);
                 		if(valorRecebido > maiorValor) {
                 			nome = secretario.getNome();
@@ -149,7 +149,7 @@ public class GestaoGastos {
                 	
             	}else if(funcionarioComBeneficio instanceof Vendedor) {
             		Vendedor vendedor = (Vendedor) empregado;
-                	if (vendedor.getMesContratacao() <= mes && vendedor.getAnoContratacao() <= ano) {
+                	if (vendedor.getAnoContratacao() < ano || (vendedor.getAnoContratacao() == ano && vendedor.getMesContratacao() <= mes)) {
                 		double valorRecebido = vendedor.calculaValorSomenteBeneficio(mes, ano);
                 		if(valorRecebido > maiorValor) {
                 			nome = vendedor.getNome();
@@ -162,7 +162,7 @@ public class GestaoGastos {
 		
 		return nome;
 	}
-	public Empregado MaiorVendaMes(ArrayList<Empregado> listaEmpregados, int mes, int ano) {
+	public static Empregado MaiorVendaMes(ArrayList<Empregado> listaEmpregados, int mes, int ano) {
 		Empregado empreg= null;
         double maiorValor = 0;
         
@@ -172,7 +172,7 @@ public class GestaoGastos {
             	beneficiado funcionarioComBeneficio = (beneficiado) empregado;
             	if(funcionarioComBeneficio instanceof Vendedor) {
             		Vendedor vendedor = (Vendedor) empregado;
-                	if (vendedor.getMesContratacao() <= mes && vendedor.getAnoContratacao() <= ano) {
+                	if (vendedor.getAnoContratacao() < ano || (vendedor.getAnoContratacao() == ano && vendedor.getMesContratacao() <= mes)) {
                 		double valorRecebido = vendedor.calculaValorSomenteVendaMes(mes, ano);
                 		if(valorRecebido > maiorValor) {
                 			empreg = vendedor;
